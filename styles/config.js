@@ -38,6 +38,22 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     marginTop: 10,
   },
+  button: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: 'rgb(92, 131, 116)',
+    width: 180,
+    borderRadius: 5,
+  },
+  containerButton: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 8,
+  },
 });
 
 export default styles;

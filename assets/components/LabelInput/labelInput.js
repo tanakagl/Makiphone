@@ -23,7 +23,7 @@ const LabelInput = ({
         style={[
           styles.input,
           {borderBottomWidth: isFocused ? 3 : 0},
-          {borderColor: isFocused ? '#5A54CE' : 'transparent'},
+          {borderColor: isFocused ? 'rgb(147, 177, 166)' : 'transparent'},
         ]}
         value={value}
         onChangeText={onChangeText}

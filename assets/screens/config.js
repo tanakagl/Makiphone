@@ -2,6 +2,8 @@ import {View, SafeAreaView, Text} from 'react-native';
 import LabelInput from '../components/LabelInput/labelInput';
 import styles from '../../styles/config';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Configuracoes = () => {
   return (
@@ -58,6 +60,14 @@ const Configuracoes = () => {
           secureTextEntry={false}
           keyboardType={'default'}
         />
+        <View style={styles.containerButton}>
+          <TouchableOpacity
+            onPress={console.log('connect-me')}
+            style={styles.button}>
+            <Text>Connect</Text>
+            <Icon name="log-in-outline" size={32} />
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     </SafeAreaProvider>
   );

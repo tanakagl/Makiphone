@@ -40,6 +40,7 @@ const TabNavigator = () => {
         tabBarActiveTintColor: '#183D3D',
         tabBarInactiveTintColor: '#5C8374',
         tabBarStyle: {backgroundColor: '#93B1A6'},
+        tabBarHideOnKeyboard: true,
       })}>
       <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
       <Tab.Screen
