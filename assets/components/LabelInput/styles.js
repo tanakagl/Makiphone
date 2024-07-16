@@ -9,10 +9,10 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,1)',
   },
   input: {
-    backgroundColor: '#183D3D',
     borderRadius: 4,
     paddingHorizontal: 10,
     color: 'rgba(255,255,255,0.8)',
+    backgroundColor: 'rgba(24,61,61,0.3)',
   },
   containerLabel: {
     marginHorizontal: 16,

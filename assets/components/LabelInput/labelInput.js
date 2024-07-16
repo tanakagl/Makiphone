@@ -28,6 +28,7 @@ const LabelInput = ({
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
+        placeholderTextColor={'rgba(255, 255, 255, 0.2)'}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
         onFocus={handleFocus}

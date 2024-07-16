@@ -25,11 +25,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 1,
   },
-  input: {
-    backgroundColor: 'rgba(8,20,55,0.6)',
-    borderRadius: 4,
-    paddingHorizontal: 10,
-  },
   title: {
     color: 'rgba(255,255,255,1)',
     fontSize: 18,
@@ -47,6 +42,7 @@ const styles = StyleSheet.create({
     borderColor: 'rgb(92, 131, 116)',
     width: 180,
     borderRadius: 5,
+    marginTop: 10,
   },
   containerButton: {
     width: '100%',
