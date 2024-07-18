@@ -21,6 +21,14 @@ import Settings from './assets/screens/config';
 import CombinedProvider from './assets/contexts/CombinedProvider';
 import OutgoingCallScreen from './assets/screens/outgoingcall';
 import IncomingCallScreen from './assets/screens/incomingcall';
+import * as TextEncodingPolyfill from 'text-encoding';
+import BigInt from 'big-integer';
+
+Object.assign(global, {
+  TextEncoder: TextEncodingPolyfill.TextEncoder,
+  TextDecoder: TextEncodingPolyfill.TextDecoder,
+  BigInt: BigInt,
+});
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

@@ -53,11 +53,11 @@ export const CallProvider = ({children}) => {
   useEffect(() => {
     console.log('Verificando authData:', authData);
     if (
-      authData.servidor &&
-      authData.porta &&
-      authData.ramal &&
-      authData.senha &&
-      authData.username
+      authData.username &&
+      authData.endpoint &&
+      authData.password &&
+      authData.server &&
+      authData.protocol
     ) {
       console.log('SetupPhone iniciado');
       setupPhone(authData);
@@ -69,23 +69,23 @@ export const CallProvider = ({children}) => {
   }, [sendAuth]);
 
   const setupPhone = authData => {
-    const {protocolo, servidor, porta, ramal, senha, username} = authData;
+    const {username, endpoint, password, server, port, protocol} = authData;
 
     const socket = new JsSIP.WebSocketInterface(
-      `${protocolo}://${servidor}:${porta}/ws`,
+      `${protocol}://${server}:${port}/ws`,
     );
 
     const configuration = {
-      uri: `sip:${ramal}@${servidor}`,
-      password: senha,
+      uri: `sip:${endpoint}@${server}`,
+      password: password,
       sockets: [socket],
       session_timers: false,
       no_answer_timeout: 180,
       hack_via_tcp: false,
       hack_via_ws: true,
-      display_name: username !== null ? username : ramal,
-      user_agent: 'Softphone React Native',
-      contact_uri: `sip:${ramal}@${servidor};transport=${protocolo}`,
+      display_name: username !== null ? username : endpoint,
+      user_agent: 'Matheo Bonucia',
+      contact_uri: `sip:${endpoint}@${server};transport=${protocol}`,
       pcConfig: {
         iceServers: [
           {urls: 'stun:stun.l.google.com:19302'},
@@ -155,7 +155,7 @@ export const CallProvider = ({children}) => {
         InCallManager.startRingtone('_BUNDLE_', [0, 1000, 500, 1000]);
         // Quando finalizar a chamada
         newSession.on('ended', () => {
-          navigation.dispatch(StackActions.replace('home'));
+          navigation.dispatch(StackActions.replace('Tabs'));
           setSession(null);
           setRemoteStream(null);
           setIncommingCaller(null);
@@ -172,7 +172,7 @@ export const CallProvider = ({children}) => {
           setRemoteStream(null);
           setSession(null);
           setIncommingCaller(null);
-          navigation.dispatch(StackActions.replace('home'));
+          navigation.dispatch(StackActions.replace('Tabs'));
           if (peerConnectionRef.current) {
             peerConnectionRef.current.close();
             peerConnectionRef.current = null;
@@ -316,9 +316,9 @@ export const CallProvider = ({children}) => {
       InCallManager.stopRingback();
       InCallManager.stopRingtone();
       InCallManager.stop();
-      navigation.dispatch(StackActions.replace('home'));
+      navigation.dispatch(StackActions.replace('Tabs'));
     } else {
-      navigation.dispatch(StackActions.replace('home'));
+      navigation.dispatch(StackActions.replace('Tabs'));
     }
   };
   const handleIniciarChamada = async () => {
@@ -371,7 +371,7 @@ export const CallProvider = ({children}) => {
         };
         console.log(calle);
         const newSession = await ua.call(
-          `sip:${calle}@${authData.servidor}`,
+          `sip:${calle}@${authData.server}`,
           options,
         );
         setSession(newSession);

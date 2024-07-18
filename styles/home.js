@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   userInterfaceText: {
-    fontSize: 18,
+    fontSize: 14,
   },
   boxCaller: {
     width: '70%',
@@ -94,6 +94,12 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 50,
     marginTop: 6,
+  },
+  boxStatus: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
   },
 });
 

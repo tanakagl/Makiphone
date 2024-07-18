@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {RTCView} from 'react-native-webrtc';
 import React, {useContext, useState} from 'react';
 import {CallContext} from '../contexts/CallContext';
