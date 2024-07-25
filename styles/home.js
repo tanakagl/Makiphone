@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   bodyUser: {
     flex: 1,
-    marginBottom: 10,
+    marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
   },
   userInterfaceText: {
     fontSize: 14,
+    color: 'rgba(255,255,255,0.7)',
   },
   boxCaller: {
     width: '70%',
@@ -65,6 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 42,
     letterSpacing: 8,
     fontWeight: 'bold',
+    color: 'rgba(255,255,255,0.7)',
   },
   bodyCall: {
     width: '100%',

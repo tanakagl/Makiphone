@@ -80,6 +80,7 @@ export const CallProvider = ({children}) => {
       password: password,
       sockets: [socket],
       session_timers: false,
+      use_preloaded_route: true,
       no_answer_timeout: 180,
       hack_via_tcp: false,
       hack_via_ws: true,
@@ -221,7 +222,7 @@ export const CallProvider = ({children}) => {
     });
     phone.on('registered', function (e) {
       setStatus('registrado');
-      if (currentAlert === null || currentAlert !== 'registrado') {
+      if (currentAlert === null) {
         setCurrentAlert('registrado');
         Alert.alert(
           'Ramal registrado!',
@@ -238,7 +239,7 @@ export const CallProvider = ({children}) => {
 
     phone.on('unregistered', function (e) {
       setStatus('naoRegistrado');
-      if (currentAlert === null || currentAlert !== 'naoRegistrado') {
+      if (currentAlert === null) {
         setCurrentAlert('naoRegistrado');
         Alert.alert('Não foi possível conectar-se ao servidor!', '', [
           {
@@ -251,7 +252,7 @@ export const CallProvider = ({children}) => {
 
     phone.on('registrationFailed', function (e) {
       setStatus('falhaRegistro');
-      if (currentAlert === null || currentAlert !== 'falhaRegistro') {
+      if (currentAlert === null) {
         setCurrentAlert('falhaRegistro');
         Alert.alert(
           'Erro ao registrar ramal!',
@@ -301,7 +302,7 @@ export const CallProvider = ({children}) => {
         InCallManager.stopRingtone();
         // Iniciar o InCallManager quando uma chamada é aceita
         InCallManager.start({media: 'audio'});
-        navigation.dispatch(StackActions.replace('roomConference'));
+        navigation.dispatch(StackActions.replace('inCall'));
       }
     } catch (error) {
       console.error('Failed to accept call:', error);
@@ -444,7 +445,7 @@ export const CallProvider = ({children}) => {
       }
     });
     setRemoteStream(remoteStream);
-    navigation.dispatch(StackActions.replace('roomConference'));
+    navigation.dispatch(StackActions.replace('inCall'));
     InCallManager.setKeepScreenOn(true);
     InCallManager.setSpeakerphoneOn(true);
   };

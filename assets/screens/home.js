@@ -57,7 +57,9 @@ const Home = () => {
                 size={14}
                 style={{marginHorizontal: 4}}
               />
-              <Text>{authData.username}</Text>
+              <Text style={{color: 'rgba(255,255,255,0.7)'}}>
+                {authData.username}
+              </Text>
             </View>
             <Text style={styles.boxCallerText}>{authData.endpoint}</Text>
           </View>

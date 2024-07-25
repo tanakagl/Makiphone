@@ -66,8 +66,14 @@ const Settings = () => {
         />
         <View style={styles.containerButton}>
           <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-            <Text>Connect</Text>
-            <Icon name="log-in-outline" size={32} />
+            <Text style={{color: 'rgba(255,255,255,0.7)', fontSize: 16}}>
+              Connect
+            </Text>
+            <Icon
+              name="log-in-outline"
+              size={35}
+              color="rgba(255,255,255,0.7)"
+            />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
