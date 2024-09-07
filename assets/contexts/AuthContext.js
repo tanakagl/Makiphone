@@ -14,6 +14,11 @@ export const AuthProvider = ({children}) => {
     protocol: '',
   });
 
+  const handleSubmit = () => {
+    save('authData', authData);
+    setSendAuth(prevState => !prevState);
+  };
+
   const save = async (key, value) => {
     try {
       await EncryptedStorage.setItem(key, JSON.stringify(value));
@@ -45,11 +50,6 @@ export const AuthProvider = ({children}) => {
       ...prevAuthData,
       [field]: value,
     }));
-  };
-
-  const handleSubmit = () => {
-    save('authData', authData);
-    setSendAuth(prevState => !prevState);
   };
 
   const contextValues = useMemo(

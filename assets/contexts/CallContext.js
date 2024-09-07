@@ -426,7 +426,7 @@ export const CallProvider = ({children}) => {
     }
   };
 
-  const captureMidias = async () => {
+  const captureMedias = async () => {
     // Obter a local track
     const senders = await peerConnectionRef.current.getSenders();
     const localStream = new MediaStream();
