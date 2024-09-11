@@ -202,7 +202,7 @@ export const CallProvider = ({children}) => {
       }
       newSession.on('confirmed', async () => {
         if (peerConnectionRef.current) {
-          captureMidias();
+          captureMedias();
         }
       });
       newSession.on('newDTMF', function (event) {
