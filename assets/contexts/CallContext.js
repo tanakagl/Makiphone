@@ -202,7 +202,7 @@ export const CallProvider = ({children}) => {
       }
       newSession.on('confirmed', async () => {
         if (peerConnectionRef.current) {
-          captureMidias();
+          captureMedias();
         }
       });
       newSession.on('newDTMF', function (event) {
@@ -426,7 +426,7 @@ export const CallProvider = ({children}) => {
     }
   };
 
-  const captureMidias = async () => {
+  const captureMedias = async () => {
     // Obter a local track
     const senders = await peerConnectionRef.current.getSenders();
     const localStream = new MediaStream();
