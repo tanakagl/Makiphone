@@ -9,7 +9,7 @@ import React, {
 import {StackActions, useNavigation} from '@react-navigation/native';
 import InCallManager from 'react-native-incall-manager';
 import JsSIP from 'react-native-jssip';
-import {Alert, Platform} from 'react-native';
+import {Alert, Platform, PermissionsAndroid} from 'react-native';
 import {AuthContext} from './AuthContext';
 
 export const CallContext = createContext();
@@ -44,6 +44,52 @@ export const CallProvider = ({children}) => {
         return 'gray';
     }
   };
+
+  useEffect(() => {
+    const requestPermission = async () => {
+      try {
+        // Solicita permissão de câmera
+        const permissionVideo = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.CAMERA,
+          {
+            title: 'Por favor, garanta as permissões de câmera para continuar',
+            buttonPositive: 'Aceitar',
+            buttonNegative: 'Rejeitar',
+            buttonNeutral: 'Lembre-me depois',
+          },
+        );
+
+        // Verifica se a permissão foi concedida
+        if (permissionVideo === PermissionsAndroid.RESULTS.GRANTED) {
+          console.log('Permissão de câmera concedida.');
+        } else {
+          console.log('Permissão de câmera negada.');
+        }
+
+        // Solicita permissão de áudio
+        const permissionAudio = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+          {
+            title:
+              'Por favor, garanta as permissões de microfone para continuar',
+            buttonPositive: 'Aceitar',
+            buttonNegative: 'Rejeitar',
+            buttonNeutral: 'Lembre-me depois',
+          },
+        );
+
+        // Verifica se a permissão foi concedida
+        if (permissionAudio === PermissionsAndroid.RESULTS.GRANTED) {
+          console.log('Permissão de microfone concedida.');
+        } else {
+          console.log('Permissão de microfone negada.');
+        }
+      } catch (err) {
+        console.warn('Erro ao garantir permissões.', err);
+      }
+    };
+    requestPermission();
+  }, []);
 
   useEffect(() => {
     console.log(status);
